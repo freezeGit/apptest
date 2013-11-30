@@ -1,0 +1,1360 @@
+<!DOCTYPE html> <!-- HTML5 -->
+<html>
+<head>
+<meta charset="UTF-8">  <!--may be other metas -->
+<title>ObesityCalcs Calculator</title>
+<!--Default style---------------------------------->
+<style>
+*
+{
+font-family:Verdana, Arial, sans-serif;
+}
+
+body
+{
+font-size:100%;
+font-family:Verdana, Arial, sans-serif;
+color: #1d1d1d;
+background-color:#eff4ff;
+}
+
+.stext
+{
+font-size:1.75em;
+}
+</style>
+<!--Header style------------------------------------>
+<style>
+
+.header
+{
+width:100%;
+}
+
+.header h1
+{
+	font-size:3em;
+	font-weight:bold;
+	text-align: center;
+	padding-top:.25em;
+	padding-bottom:.25em;
+	width:100%;
+}
+
+.main .header h1, .info .header h1
+{
+    color: #ffc40d;
+    background-color:#603cba;
+}
+
+.display .header h1, .data .header h1
+{
+    color: #1d1d1d;
+    background-color:#ee1111;
+}
+</style>
+<!--navigation bar style---------------------------->
+<style>
+.navbar ul
+{
+list-style-type: none;
+width:100%;
+margin:auto;
+padding:0px;
+}
+
+.navbar li
+{
+    float: left;
+	width:30%;
+    margin-right: 0.5em;
+}
+
+.navbar a
+{
+    display: block;
+	font-size:2.5em;
+	font-weight:bold;
+    color: #ffc40d ;
+    background-color:#1d1d1d;
+    text-decoration: none;
+    text-align: center;
+	margin-bottom:1em;
+	padding-top:0em;
+	padding-bottom:0m;
+}
+
+.navbar a:hover
+{
+    background-color: #6666AA;
+}
+</style>
+<!--Menu style------------------------------------->
+<style>
+#menu ul
+{
+	list-style-type: none;
+	width:100%;
+	margin:auto;
+    padding:0px;
+}
+
+@media screen and (orientation: portrait)
+{
+#menu li
+{
+	margin-left:10%;
+	width:80%;
+}
+}
+
+@media screen and (orientation: landscape)
+{
+#menu li
+{
+width:50%;
+}
+}
+
+#menu li a
+{
+    display: block;
+	font-size:2.5em;
+	font-weight:bold;
+    color: #1d1d1d;
+    background-color:#ee1111;
+    text-decoration: none;
+	
+    text-align: center;
+	margin:1em;
+	padding-top:.5em;
+	padding-bottom:.5em;
+}
+
+.cl
+{
+clear:left;
+float:left;
+}
+
+.lt
+{
+float:left;
+}
+
+#menu a:hover
+{
+    background-color: #6666AA;
+}
+</style>
+<!--Display table----------------------------------->
+<style>
+.display .dds
+{
+font-size:2em;
+color:#1e7145;
+text-align: center;
+}
+
+.display table
+{
+margin:auto;
+font-size:2em;
+font-weight:bold;
+text-align:left;
+}
+
+.display table td
+{
+padding-right:1em;
+}
+</style>
+<!--Display style----------------------------------->
+<style>
+.info .eqn
+{
+color:#b91d47;
+}
+</style>
+<!--Data table-------------------------------------->
+<style>
+.data table
+{
+margin:auto;
+font-size:2em;
+font-weight:bold;
+text-align:left;
+}
+
+.data table td
+{
+padding-bottom:.5em;
+padding-right:1em;
+}
+
+.data table td input
+{
+font-size:1em;
+}
+
+#mf
+{
+color:#ffc40d;
+background-color:#1e7145;
+padding-left:.5em;
+padding-right:.5em;
+}
+</style>
+<!--Utility css------------------------------------->
+<style>
+.hidden {display:none;}
+.unhidden {display:block;}
+.endfloat {clear: both;}
+</style>
+<!--Temporary style stuff----------------------------->
+<style>
+.dobutton
+{
+width:30%;
+display: block;
+	font-size:2.5em;
+	font-weight:bold;
+    color:#ffc40d;
+    background-color:#1e7145;
+    text-align: center;
+	margin:auto;
+	margin-top:1em;
+	padding-top:0em;
+	padding-bottom:0m;
+}
+hr {color:#1e7145;}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<!--Main menu page---------------------------------->
+<div class="main">
+<div id="PageMenu" class="unhidden"> 
+<div class="header">
+<h1>
+ObesityCalcs
+</h1>
+</div>
+<div class="navbar">
+    <ul>
+        <li><a href="javascript:nav.toPage('PageInfoMenu');">Info</a></li>
+    </ul>
+</div>
+<div id="menu">
+    <ul>
+        <li class="cl"><a href="javascript:nav.toPage('PageDisplayWS');">Weight Scalars</a></li>
+        <li class="lt"><a href="javascript:nav.toPage('PageDisplayBV');">Blood Volumes</a></li>
+        <li class="cl"><a href="javascript:nav.toPage('PageDisplayGFR');">Estimated GFR</a></li>
+		<li class="lt"><a href="javascript:nav.toPage('PageDisplayOSA');">OSA Risk</a></li>
+		<div class="endfloat"></div>
+    </ul>
+</div>
+</div>
+</div>
+
+<!--Display pages------------------------------>
+<div class="display">
+<!--Weight scalar Display page----------------------->
+<div id="PageDisplayWS" class="hidden">
+<div class="header">
+<h1>Weight Scalars</h1>
+</div>
+<div class="navbar">
+    <ul>
+		<li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
+        <li><a href="javascript:nav.toPage('PageInfoWS');">Info</a></li>
+		<li><a href="javascript:nav.toPage('PageData');">Data</a></li>
+ 		<div class="endfloat"></div>
+    </ul>
+</div>
+
+<p id="wsDS"" class="dds">x</p>
+
+<table>
+<tr>
+  <td>Body&nbsp;Mass Index:</td>
+  <td id="wsBMI">22.0</td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td>Total&nbsp;Body Weight:</td>
+  <td><span id="wsTBW">x</span>&nbsp;kg</td>
+</tr>
+<tr>
+  <td>Lean&nbsp;Body Weight:</td>
+  <td><span id="wsLBW">x</span>&nbsp;kg</td>
+</tr>
+<tr>
+  <td>Lean-Scaled Weight:</td>
+  <td><span id="wsLSW">x</span>&nbsp;kg</td>
+</tr>
+<tr>
+  <td>Ideal&nbsp;Body Weight:</td>
+  <td><span id="wsIBW">x</span>&nbsp;kg</td>
+</tr>
+<tr>
+  <td>BMI22 Weight:</td>
+  <td><span id="wsBMI22">x</span>&nbsp;kg</td>
+</tr>
+<tr>
+  <td>Adjusted&nbsp;Body Weight:</td>
+  <td><span id="wsABW">x</span>&nbsp;kg</td>
+</tr>
+</table>
+
+</div>
+
+<!--Blood Volumes Display page----------------------->
+<div id="PageDisplayBV" class="hidden">
+<div class="header">
+<h1>Blood Volumes</h1>
+</div>
+<div class="navbar">
+    <ul>
+		<li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
+		<li><a href="javascript:nav.toPage('PageInfoBV');">Info</a></li>
+		<li><a href="javascript:nav.toPage('PageData');">Data</a></li>
+		<div class="endfloat"></div>
+    </ul>
+</div>
+
+<p id="bvDS" class="dds">x</p>
+
+<table>
+<tr>
+  <td>Body&nbsp;Mass Index:</td>
+  <td id="bvBMI">22.0</td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td>Blood&nbsp;Volume Index:</td>
+  <td><span id="bvVI">x</span>&nbsp;cc/kg</td>
+</tr>
+<tr>
+  <td>Estimated&nbsp;Blood Volume:</td>
+  <td><span id="bvEV">x</span>&nbsp;cc</td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td>Maximum&nbsp;Blood Loss:</td>
+  <td><span id="bvMV">x</span>&nbsp;cc</td>
+</tr>
+<tr>
+  <td>Fractional&nbsp;Blood Loss:</td>
+  <td><span id="bvFV">x</span>%</td>
+</tr>
+</table>
+</div>
+<!--Estimted GFR Display page------------------------>
+<div id="PageDisplayGFR" class="hidden">
+<div class="header">
+<h1>Estimated GFR</h1>
+</div>
+<div class="navbar">
+    <ul>
+		<li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
+        <li><a href="javascript:nav.toPage('PageInfoGFR');">Info</a></li>
+		<li><a href="javascript:nav.toPage('PageData');">Data</a></li>
+		<div class="endfloat"></div>
+    </ul>
+</div>
+
+<p id="gfrDS"" class="dds">x</p>
+
+<table>
+<tr>
+  <td>Body&nbsp;Mass Index:</td>
+  <td id="gfrBMI">22.0</td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td>GFR1:</td>
+  <td><span id="gfrGFR1">x</span>&nbsp;un</td>
+</tr>
+<tr>
+  <td>GFR2:</td>
+  <td><span id="gfrGFR2">x</span>&nbsp;un</td>
+</tr>
+<tr>
+  <td>GFR3:</td>
+  <td><span id="gfrGFR3">x</span>&nbsp;un</td>
+</tr>
+<tr>
+  <td>GFR4:</td>
+  <td><span id="gfrGFR4">x</span>&nbsp;un</td>
+</tr>
+</table>
+</div>
+<!--OSA Display page--------------------------------->
+<div id="PageDisplayOSA" class="hidden">
+<div class="header">
+<h1>OSA Risk</h1>
+</div>
+<div class="navbar">
+    <ul>
+		<li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
+        <li><a href="javascript:nav.toPage('PageInfoOSA');">Info</a></li>
+		<div class="endfloat"></div>
+    </ul>
+</div>
+
+<div class="stext">
+<p>
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
+</p>
+</div>
+</div>
+</div>
+
+<!--Data entry-------------------------------->
+<div class="data">
+<!--Data entry page--------------------------->
+<div id="PageData" class="hidden">
+<div class="header">
+<h1>Patient Data</h1>
+</div>
+<div class="navbar">
+    <ul>
+        <li><a id="calc" >Done</a></li>
+		<div class="endfloat"></div>
+    </ul>
+</div>
+
+<table>
+<tr>
+  <td>Sex:</td>
+  <td><span id="mf"> Male</span></td>
+</tr>
+<tr>
+  <td id="inWtSt">Weight&nbsp;(kg):</td>
+  <td><input id="inWt" type="number"></td>
+</tr>
+<tr>
+  <td id="inHtSt">Height&nbsp;(cm):</td>
+  <td><input id="inHt" type="number"></td>
+</tr>
+<tr>
+  <td id="inAgeSt">Age&nbsp;(yr):</td>
+  <td><input id="inAge" type="number"></td>
+</tr>
+<tr>
+  <td id="inHbStartSt">Initial&nbsp;Hb:</td>
+  <td><input id="inHbStart" type="number"></td>
+</tr>
+<tr>
+  <td id="inHbMinSt">Minimum&nbsp;Hb:</td>
+  <td><input id="inHbMin" type="number"></td>
+</tr>
+<tr>
+  <td id="inCreatSt">Creatinine&nbsp;(&#956;mol/l):</td>
+  <td><input id="inCreat" type="number"></td>
+</tr>
+</table>
+
+<div class="dobutton"  id="units">Units</div>
+
+<div class="dobutton"  id="reset">Reset</div>
+</div>
+</div>
+
+<!--Information pages------------------------------>
+<div class="info">
+<!--Menu information page-------------------------->
+<div id="PageInfoMenu" class="hidden">
+<div class="header">
+<h1>ObesityCalcs</h1>
+</div>
+<div class="navbar">
+    <ul>
+		<li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
+		<div class="endfloat"></div>
+    </ul>
+</div>
+
+<div class="stext">
+
+<h3>Using ObesityCalcs</h3>
+
+<p>
+ObesityCalcs demonstrates several calculations 
+that are useful in the anesthetic management of obese patients (as well 
+as some that are less useful, but found in the literature.) 
+Parameters can be modified 
+and the resulting calculations can be compared to clinical 
+practice and intuition. 
+</p>
+
+<p>
+<b>Choose Module:</b><br />
+Click on <i>Blood Volumes</i> or <i>Weight Scalars</i> to display 
+the desired module. 
+</p>
+
+<p>
+<b>Enter Data:</b><br />
+Enter patient data and check or 
+uncheck other parameters as appropriate.  Then click on 
+<i>Calculate</i> to display the new calculated values. 
+</p>
+
+<p>
+<b>Changing Modules:</b><br />
+When the window displaying a module is closed, all data is remembered. 
+You can go back and forth between Blood Volumes and 
+Weight Scalars without needing to reenter or recalculate data. 
+</p>
+
+<p>
+<b>Information:</b><br />
+Clicking on any of the info buttons will display information, 
+including a description of the parameter, the formula used to 
+calculate it, and relevant references. 
+</p>
+
+<p>
+<b>Help:</b><br />
+The Help topics include informaton and references in printable format. 
+</p>
+
+</div>
+</div>
+<!--Display information pages------------------------------->
+<!--Weight scalars information page------------------------->
+<div id="PageInfoWS" class="hidden">
+<div class="header">
+<h1>Weight Scalars</h1>
+</div>
+<div class="navbar">
+    <ul>
+        <li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
+		<li><a href="javascript:nav.toPage('PageDisplayWS');">Values</a></li>
+ 		<div class="endfloat"></div>
+    </ul>
+</div>
+<div class="stext">
+<h3>Weight-Based Dosing Scalars for Obese Patients<sup>1,2,13</sup></h3>
+
+<p>
+<b>Propofol/ Thiopental</b><br />
+<b><i>Induction:</i></b> Lean-Scaled Weight (LSW)<sup>12</sup><br />
+<b><i>Maintenance:</i></b> Total Body Weight (TBW)<br />
+</p>
+
+<p>
+<b>Fentanyl/ Sufentanil/ Remifentanil</b><br />
+Lean-Scaled Weight (LSW)<sup>12</sup><br />
+</p>
+
+<p>
+<b>Succinylcholine</b><br />
+Total Body Weight (TBW)<br />
+</p>
+
+<p>
+<b>Vecuronium/ Rocuronium/<br />Atracurium/ Cisatracurium</b><br />
+Ideal Body Weight (IBW)<br />
+</p>
+
+<p>
+<b>Non-Obese Patients</b><br />
+Total Body Weight (TBW)<br />
+</p>
+
+<p>
+The above weight scalars provide a guide to the influence of obesity 
+on the estimation of safe and effective doses for different classes of drugs. 
+The actual dose chosen will depend on individual patient factors such as age, sex, and medical conditions. 
+</p>
+
+<hr />
+
+<h3>Body Mass Index (BMI)</h3>
+
+<p>
+<b>Calculation:</b><br />
+<span class="eqn">BMI = TBW/Height<sup>2</sup></span><br />
+(Where TBW is in kg and Height is in meters)<br />
+</p>
+
+
+<p>
+<b>Use:</b><br />
+The BMI is widely used to classify obesity and to quantify risk. 
+However, it does not distinguish between muscle and fat 
+and is not recommended as a weight scalar for calculating 
+drug dosage in obese patients<sup>1,2,3</sup>.
+</p>
+
+<h3>Total Body Weight (TBW)</h3>
+
+<p>
+<b>Calculation:</b><br />
+<span class="eqn">TBW = body weight in kilograms</span><br />
+</p>
+
+<p>
+<b>Use:</b><br />
+The TBW is the appropriate weight scalar for use with 
+patients of normal weight. However, in morbidly obese individuals 
+the increased weight is composed of proportionately greater 
+adipose tissue than muscle mass. Cardiac output is increased, but 
+remains largely directed to the vessel rich or lean tissue groups. 
+Drug distribution and clearance are both altered in obesity, and 
+using a mg per kg dose based on total body weight may result 
+in overdose<sup>1,2,3</sup>.
+</p>
+
+<h3>Lean Body Weight (LBW)</h3>
+
+<p>
+<b>Calculation:<sup>5</sup></b><br />
+<span class="eqn">LBW = 9270&times;TBW/(6680+216&times;BMI)</span> For men<br />
+<span class="eqn">LBW = 9270&times;TBW/(8780+244&times;BMI)</span> For women<br />
+</p>
+
+<p>
+<b>Use:</b><br />
+The LBW is the TBW minus the fat mass, and represents 
+the fat free mass. It is not the ideal or the normal weight. 
+The LBW correlates with the  cardiac output 
+and also with drug clearance<sup>3</sup>. It is arguably the 
+single best weight scalar for use in morbid obesity<sup>4</sup>, 
+although the volume of distribution for lipophilic drugs 
+may be more dependent on the TBW or fat mass<sup>3</sup>.
+The model used here to calculate the LBW is that of 
+Janmahasatian<sup>5</sup>, which does better in obese patients 
+than the James formula seen in older literature.<sup>3,13</sup> 
+</p>
+
+<h3>Lean-Scaled Weight (LSW)</h3>
+
+<p>
+<b>Calculation:<sup>12</sup></b><br />
+<span class="eqn">LSW = 1.233&times;LBW <br />
+= 11432&times;TBW/(6680+216&times;BMI)</span> For men<br /><br />
+<span class="eqn">LSW = 1.526&times;LBW <br />
+= 14148&times;TBW/(8780+244&times;BMI)</span> For women<br /><br />
+(LBW from Janmahasatian calculation<sup>5</sup>)
+</p>
+
+<p>
+<b>Use:</b><br />
+The lean body weight (LBW) is always less than the TBW. This includes non-obese patients. 
+Therefore the LBW can not be used directly to calculate drug doses on a 
+mg per kg basis, and must be scaled upwards<sup>6,7</sup>. 
+The LSW is calculated by normalizing the LBW functions to 
+a BMI of 22 for both men and women. 
+It is intended for use with those drugs whose doses vary in proportion to the lean body weight<sup>12</sup>. 
+<br /><br />
+The LSW is easily estimated without a calculator: 
+it is about 75% of the TBW at a BMI of 40, 60% at a BMI of 60, and 50% at a BMI of 80. 
+</p>
+
+<h3>Ideal Body Weight (IBW)</h3>
+
+<p>
+<b>Calculation:<sup>8</sup></b><br />
+<span class="eqn">IBW = 45.4+0.89&times;(Height-152.4)</span><br />
+<span class="eqn">For men: add 4.5</span><br />
+(Height is in cm)<br />
+</p>
+
+<p>
+<b>Use:</b><br />
+The IBW is the weight that predicts the maximum life expectancy 
+for a given height, but it does not reflect changes in body composition 
+with obesity.<sup>3</sup> Nonetheless, studies suggest that the IBW 
+may be useful for dosing nondepolarizing muscle relaxants.<sup>1,2</sup> 
+The Devine formula<sup>8</sup> is commonly used and is calculated here. 
+See the BMI22 Weight for an alternative. 
+</p>
+
+<h3>BMI22 Weight</h3>
+
+<p>
+<b>Calculation:</b><br />
+<span class="eqn">BMI22 = 22&times;Height<sup>2</sup> 
+= TBW&times;22/BMI</span><br />
+(Where Height is in meters)<br />
+</p>
+
+<p>
+<b>Use:</b><br />
+The BMI22 Weight is another way to estimate the ideal body 
+weight<sup>11</sup>. It is the weight a patient would have if the BMI 
+were to be 22, given his or her height. An advantage is that no calculation 
+is required: the BMI22 Weight can be read from any BMI chart. 
+Alternatively, the proportionality factor 22/BMI can be estimated. 
+</p>
+
+<h3>Adjusted Body Weight (ABW)</h3>
+
+<p>
+<b>Calculation:</b><br />
+<span class="eqn">ABW = IBW+0.4&times;(TBW-IBW)</span><br />
+</p>
+
+<p>
+<b>Use:</b><br />
+The ABW adds a percentage of the excess weight to the IBW in an attempt 
+to normalize drug doses in obese patients. 
+The empirical factor of 40% used by Servin<sup>9</sup> 
+is employed here. 
+</p>
+
+<hr /><b>References</b><br />
+
+<p>
+1. 
+Ingrande J, Lemmens HJM. 
+Dose adjustment of anaesthetics in the morbidly obese. 
+Br J Anaesth. 
+2010 Dec;105 Suppl 1:i16-23.
+</p>
+
+<p>
+2. 
+Lemmens HJM. 
+Perioperative pharmacology in morbid obesity. 
+Curr Opin Anaesthesiol. 
+2010 Aug;23(4):485-91. 
+</p>
+
+<p>
+3. 
+Morrish GA, Pai MP, Green B. 
+The effects of obesity on drug pharmacokinetics in humans. 
+Expert Opin Drug Metab Toxicol. 
+2011 Jun;7(6):697-706.
+</p>
+
+<p>
+4. 
+Han PY, Duffull SB, Kirkpatrick CMJ, Green B. 
+Dosing in obesity: a simple solution to a big problem. 
+Clin. Pharmacol. Ther. 
+2007 Nov;82(5):505-8.
+</p>
+
+
+<p>
+5. 
+Janmahasatian S, Duffull SB, Ash S, Ward LC, Byrne NM, Green B. 
+Quantification of lean bodyweight. 
+Clin Pharmacokinet. 
+2005;44(10):1051-65.
+</p>
+
+<p>
+6. 
+Bouillon T, Shafer SL. 
+Does size matter? 
+Anesthesiology. 
+1998 Sep;89(3):557-60.
+</p>
+
+
+<p>
+7. 
+McLeay SC, Morrish GA, Kirkpatrick CM, Green B. 
+Encouraging the move towards predictive population models for the obese using propofol as a motivating example. 
+Pharm. Res. 
+2009 Jul;26(7):1626-34.
+</p>
+
+<p>
+8. 
+Devine BJ. 
+Gentamicin therapy. 
+Drug Intell Clin Pharm. 
+1974; (8):650-655
+</p>
+
+<p>
+9. 
+Servin F, Farinotti R, Haberer JP, Desmonts JM. 
+Propofol infusion for maintenance of anesthesia in morbidly obese patients receiving nitrous oxide. A clinical and pharmacokinetic study. 
+Anesthesiology. 
+1993; 78:657-665.
+</p>
+
+
+<p>
+10. 
+Duffull SB, Dooley MJ, Green B, Poole SG, Kirkpatrick CMJ. 
+A standard weight descriptor for dose adjustment in the obese patient. 
+Clin Pharmacokinet. 
+2004;43(15):1167-78.
+</p>
+
+
+<p>
+11. 
+Lemmens HJM, Brodsky JB, Bernstein DP. 
+Estimating ideal body weight--a new formula. 
+Obes Surg. 
+2005 Aug;15(7):1082-3.
+</p>
+
+<p>
+12. 
+Friesen JH. 
+Lean-scaled weight: a proposed weight scalar to calculate drug doses for obese patients. 
+Can J Anesth. 
+2013 Feb;60(2):214-5.
+</p>
+
+<p>
+13. 
+Cullen A, Ferguson A. 
+Perioperative management of the severely obese patient: a selective pathophysiological review. 
+Can J Anesth. 
+2012 Oct;59(10):974-96.
+</p>
+
+</div>
+</div>
+<!--Blood volumes information page------------------------->
+<div id="PageInfoBV" class="hidden">
+<div class="header">
+<h1>Blood Volumes</h1>
+</div>
+<div class="navbar">
+    <ul>
+        <li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
+		<li><a href="javascript:nav.toPage('PageDisplayBV');">Values</a></li>
+ 		<div class="endfloat"></div>
+    </ul>
+</div>
+
+<div class="stext">
+<h3>Estimation of Blood Volumes<sup>1</sup></h3>
+
+ <p>
+Preoperative estimation of a patient's blood volume is necessary 
+in order to guide the administration of crystalloids, colloids, 
+red blood cells and coagulation factors. The increase 
+in total blood volume with obesity is non-linear, which can result 
+in its overestimation for morbidly obese patients. 
+</p>
+
+<p>
+<b>Non-Obese Patients:</b><br />
+The blood volume index is usually estimated as 70 cc/kg for men, 
+and 65 cc/kg for women.
+</p>
+
+<p>
+<b>Morbidly Obese Patients:</b><br />
+Lemmens et al have derived an empirical equation that corrects 
+the blood volume index for obesity (where BMI/22 estimates the 
+deviation from ideal weight):<sup>1</sup><br />
+<span class="eqn">Blood Volume Index (cc/kg) = 70&divide;sqrt(BMI/22)</span><br />
+Check <i>Modify for Obesity</i> to apply this formula. 
+(No effect if BMI is less than 22)
+</p>
+
+<p>
+<b>Influence of Age:</b><br />
+In normal, but sedentary, patients the blood volume index 
+decreases with advancing age.<sup>1</sup> This decrease does not occur 
+in those who remain aerobically fit.<br />
+<span class="eqn">BV<sub>index</sub> = 90&#8722;0.4&times;age</span> For men<br />
+<span class="eqn">BV<sub>index</sub> = 85&#8722;0.4&times;age</span> For women<br />
+Check <i>Modify for Age</i> to apply this regression. 
+(No effect if age is less than 50)
+</p>
+
+<p>
+<b>Hypertension and other corrections:</b><br />
+Blood volume is contracted in lean hypertensive patients. This effect 
+diminishes as weight increases and does not apply to obese patients. 
+It is necessary to allow for this or any 
+other factors that may apply to the individual patient.
+</p>
+
+<p>
+<b>Maximum Untransfused Blood Loss:</b><br />
+It is useful to estimate the maximum allowable blood loss that a patient 
+can tolerate without transfusion of red cells. The formula used is:<sup>3</sup><br />
+<span class="eqn">Max bood loss = EBV&times;ln(H<sub>init</sub>/H<sub>min</sub>)</span><br />
+where H<sub>init</sub> is the initial Hb or Hct, H<sub>min</sub> 
+is the minimum (target, not trigger) thought to be safe 
+for the individual patient, and ln is the natural logarithm. The 
+frequently used linear approximation<sup>4</sup> 
+EBV&times;(H<sub>init</sub>&#8722;H<sub>min</sub>)&divide;
+&#189;(H<sub>init</sub>+H<sub>min</sub>) 
+slightly underestimates the MBL. The total blood volume is also useful for 
+estimating how much blood can be lost before unacceptible decreases in 
+fibrinogen or platelets are likely to occur.<sup>2</sup>
+</p>
+
+<hr>
+<b>References</b><br />
+
+ <p>
+1. 
+Lemmens HJM, Bernstein DP, Brodsky JB. 
+Estimating blood volume in obese and morbidly obese patients. 
+Obes Surg. 
+2006 Jun;16(6):773-6.
+</p>
+
+<p>
+2. 
+Singbartl K, Innerhofer P, Radvan J, Westphalen B, Fries D, Stogbauer R, et al. 
+Hemostasis and hemodilution: a quantitative mathematical guide for clinical practice. 
+Anesth. Analg. 
+2003 Apr;96(4):929-935.
+</p>
+
+<p>
+3. 
+Bourke DL, Smith TC. 
+Estimating allowable hemodilution. 
+Anesthesiology. 
+1974 Dec;41(6):609-12.
+</p>
+
+
+<p>
+4. 
+Gross JB. 
+Estimating allowable blood loss: corrected for dilution. 
+Anesthesiology. 
+1983 Mar;58(3):277-80.
+</p>
+</div>
+</div>
+<!--Estimated GFR informatuion page------------------------->
+<div id="PageInfoGFR" class="hidden">
+<div class="header">
+<h1>Estimated GFR</h1>
+</div>
+<div class="navbar">
+    <ul>
+        <li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
+		<li><a href="javascript:nav.toPage('PageDisplayGFR');">Values</a></li>
+		<div class="endfloat"></div>
+    </ul>
+</div>
+
+<div class="stext">
+<p>
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
+</p>
+</div>
+</div>
+<!--OSA information page----------------------------------->
+<div id="PageInfoOSA" class="hidden">
+<div class="header">
+<h1>OSA Risk</h1>
+</div>
+<div class="navbar">
+    <ul>
+        <li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
+		<li><a href="javascript:nav.toPage('PageDisplayOSA');">Values</a></li>
+ 		<div class="endfloat"></div>
+    </ul>
+</div>
+
+<div class="stext">
+<h1>This is h1</h1> <br>
+<h2>This is h2</h2> <br>
+This is <b>bold</b> <br>
+Xxxxxx
+</div>
+
+<div>
+<h1>This is h1</h1> <br>
+<h2>This is h2</h2> <br>
+This is default text. This is <b>bold</b> <br>
+Xxxxxx <br>
+</div>
+<p class="stext">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
+</p>
+</div>
+</div>
+<!---Global variables--------------------------->
+<script>
+
+</script>
+<!--Page navigation----------------------------->
+<script>
+nav=new Object();
+nav.page='PageMenu';
+nav.oldPage='PageMenu';
+nav.toPage=function(idPage)
+{
+	var p1 = document.getElementById(this.page);
+	if (p1) {
+	  p1.className=' hidden';
+	}
+	 var p2 = document.getElementById(idPage);
+	if (p2) {
+	  p2.className='unhidden';
+	}
+	this.oldPage=this.page;
+	this.page=idPage;
+}
+nav.goBack=function()
+{
+	nav.toPage(nav.oldPage);
+}
+</script>
+<!--Dat objects----------------------------------------------->
+<script>
+function inToCm(inch) {return 2.54*inch;}
+function cmToIn(cm) {return cm/2.54;}
+function lbToKg(lb) {return lb/2.2;}
+function kgToLb(kg) {return 2.2*kg;}
+function mgpdlToMmpl(mgpdl) {return 88.4*mgpdl;}
+function mmplToMgpdl(mmpl) {return mmpl/88.4;}
+
+function Dat(sdec, odec) {
+	this.sd = sdec;
+	this.od = odec;
+	this.num = 0;
+	this.str = "0";
+	this.old = "0";
+} 
+Dat.prototype.toOld = function(siv) {}
+Dat.prototype.toSI = function(oldv) {}
+Dat.prototype.set = function(value)
+{
+	this.num = value;
+	this.str = value.toFixed(this.sd);
+	var ov = this.toOld(value);
+	this.old = ov.toFixed(this.od);
+}
+Dat.prototype.setOld = function(ovalue)
+{
+	this.set(this.toSI(ovalue));
+}
+
+function Wt(sdec, odec) {Dat.call(this, sdec, odec);}
+Wt.prototype = new Dat();
+Wt.prototype.constructor = Wt;
+Wt.prototype.toOld = function(siv) {return kgToLb(siv);}
+Wt.prototype.toSI = function(oldv) {return lbToKg(oldv);}
+
+function Ht(sdec, odec) {Dat.call(this, sdec, odec);}
+Ht.prototype = new Dat();
+Ht.prototype.constructor = Ht;
+Ht.prototype.toOld = function(siv) {return cmToIn(siv);}
+Ht.prototype.toSI = function(oldv) {return inToCm(oldv);}
+
+function Hbstart(sdec, odec) {Dat.call(this, sdec, odec);}
+Hbstart.prototype = new Dat();
+Hbstart.prototype.constructor = Hbstart;
+Hbstart.prototype.toOld = function(siv) {return siv;}
+Hbstart.prototype.toSI = function(oldv) {return oldv;}
+
+function Hbmin(sdec, odec) {Dat.call(this, sdec, odec);}
+Hbmin.prototype = new Dat();
+Hbmin.prototype.constructor = Hbmin;
+Hbmin.prototype.toOld = function(siv) {return siv;}
+Hbmin.prototype.toSI = function(oldv) {return oldv;}
+
+function Creat(sdec, odec) {Dat.call(this, sdec, odec);}
+Creat.prototype = new Dat();
+Creat.prototype.constructor = Creat;
+Creat.prototype.toOld = function(siv) {return mmplToMgpdl(siv);}
+Creat.prototype.toSI = function(oldv) {return mgpdlToMmpl(oldv);}
+
+function Age(sdec, odec) {Dat.call(this, sdec, odec);}
+Age.prototype = new Dat();
+Age.prototype.constructor = Age;
+Age.prototype.toOld = function(siv) {return siv;}
+Age.prototype.toSI = function(oldv) {return oldv;}
+</script>
+<!--data object----------------------------------------------->
+<script>	
+data=new Object();
+data.units = "si";
+data.sex = "Male";
+data.wt = new Wt(1,1);
+data.ht = new Ht(1,1);
+data.hbstart = new Hbstart(1,1);
+data.hbmin = new Hbmin(1,1);
+data.creat = new Creat(0,2);
+data.age = new Age(0,0);
+
+data.init=function()
+{
+	this.sex = "Male";
+	this.wt.set(70.0);
+	this.ht.set(178.4);
+	this.hbstart.set(140.0);
+	this.hbmin.set(70.0);
+	this.creat.set(84.0);
+	this.age.set(50.0);
+
+}
+data.getVal=function(id, dt)
+{
+	var v = document.getElementById(id).value;
+	var num = Number(v);
+	var siUnits = (data.units=="si");
+	if (isNaN(num))
+	{
+		document.getElementById(id).value = siUnits ? dt.str : dt.old;
+		alert("Invalid data: "+v);
+	}
+	else
+	{
+		siUnits ? dt.set(num) : dt.setOld(num);
+		document.getElementById(id).value = siUnits ? dt.str : dt.old;
+	}
+}
+data.toggleUnits=function()
+{
+	this.units = (this.units=="si") ? "old" : "si";
+	this.writeForm();
+}
+
+data.reset=function()
+{
+	this.init();
+	this.writeForm();
+}
+data.toggleMF=function()
+{
+	this.sex = (this.sex=="Male") ? "Female" : "Male";
+	document.getElementById("mf").innerHTML = this.sex;
+}
+data.publish=function()
+{
+	this.writeForm();
+	var wsDstr = "Weight:&nbsp;"+this.wt.str+"&nbsp;kg&nbsp;&nbsp; Height:&nbsp;"+this.ht.str+"&nbsp;cm&nbsp;&nbsp; Sex:&nbsp;"+this.sex;
+	var bvDstr = "Initial&nbsp;Hb:&nbsp;"+this.hbstart.str+"&nbsp;kg&nbsp;&nbsp; Min&nbsp;Hb:&nbsp;"+this.hbmin.str+"&nbsp;cm&nbsp;&nbsp; Age:&nbsp;"+this.age.str;
+	bvDstr = wsDstr + "&nbsp;&nbsp; " + bvDstr;
+	var gfrDstr = "Weight:&nbsp;"+this.wt.str+"&nbsp;kg Sex:&nbsp;"+this.sex+"&nbsp;&nbsp; and other stuff will go here";
+	document.getElementById("wsDS").innerHTML = wsDstr;
+	document.getElementById("bvDS").innerHTML = bvDstr;
+	document.getElementById("gfrDS").innerHTML = gfrDstr;
+}
+data.writeForm=function()
+{
+	var siUnits = (this.units=="si");
+	document.getElementById("mf").innerHTML = this.sex;
+	document.getElementById("inWtSt").innerHTML = "Weight&nbsp;(" + (siUnits ? "kg" : "lb") + "):";
+	document.getElementById("inWt").value = siUnits ? this.wt.str : this.wt.old;
+	document.getElementById("inHtSt").innerHTML = "Height&nbsp;(" + (siUnits ? "cm" : "in") + "):";
+	document.getElementById("inHt").value = siUnits ? this.ht.str : this.ht.old;
+	document.getElementById("inHbStart").value = this.hbstart.str;
+	document.getElementById("inHbMin").value = this.hbmin.str;
+	document.getElementById("inCreatSt").innerHTML = "Creatinine&nbsp;(" + (siUnits ? "&#956;mol/l" : "mg/dl&nbsp;") + "):";
+	document.getElementById("inCreat").value = siUnits ? this.creat.str : this.creat.old;	
+	document.getElementById("inAge").value = this.age.str;	
+}
+</script>
+<!--Calculations--------------------------------------->
+<script>
+function calcBMI(pwt, pht)
+{
+    var mtrs = pht/100.0;
+    return pwt/(mtrs*mtrs);
+}
+function calcLBW(pbmi, pwt, psex)
+{
+	var denom;
+	if (psex=="Male")
+		denom = 6680.0 + 216.0*pbmi;
+	else
+		denom = 8780.0 + 244.0*pbmi;
+	return (9270.0*pwt)/denom;
+}
+function calcLSW(plbw, psex)
+{
+	var sf = (psex=="Male") ? 1.233226 : 1.526214;
+	return sf*plbw;
+}
+function calcIBW(pht, psex)
+{
+	var iw = 45.4 + 0.89*(pht-152.4);
+    if (psex=="Male")
+        iw+=4.5;
+	return iw;
+}
+function calcBMI22(pht)
+{
+    var mtrs = pht/100.0;
+    return 22.0*mtrs*mtrs;
+}
+function calcABW(pibw, pwt)
+{
+	return pibw + 0.4*(pwt-pibw);
+}
+function calcVI(pbmi, page, psex)
+{
+	var rg = (psex=="Male") ? 90.0 : 85.0;
+	if (page<50.0)
+		page=50.0;
+	rg-=0.4*page;
+	var obfactor = (pbmi>22.0) ? 1.0/Math.sqrt(pbmi/22.0) : 1.0;
+	return obfactor*rg;
+}
+function calcEV(pvi, pwt)
+{
+    return pvi*pwt;
+}
+function calcFV(pstarthb, pminhb)
+{
+    return Math.log(pstarthb/pminhb);
+}
+function calcMV(pfv, pev)
+{
+    return pfv*pev;
+}
+function calcGFR1()
+{
+    return 110.0;
+}
+function calcGFR2()
+{
+    return 120.0;
+}
+function calcGFR3()
+{
+    return 130.0;
+}
+function calcGFR4()
+{
+    return 140.0;
+}
+ </script>
+<!--Values object--------------------------------------------->
+<script>
+vals=new Object();
+vals.bmi, vals.tbw, vals.lbw, vals.lsw, vals.ibw, vals.bmi22, vals.abw;
+vals.vi, vals.ev, vals.mv, vals.fv;
+vals.gfr1, vals.gfr2, vals.gfr3, vals.gfr4;
+ 
+vals.calc=function()
+{	
+	this.bmi=calcBMI(data.wt.num, data.ht.num);
+	this.tbw=data.wt.num;
+	this.lbw=calcLBW(this.bmi, data.wt.num, data.sex);
+	this.lsw=calcLSW(this.lbw, data.sex);
+	this.ibw=calcIBW(data.ht.num, data.sex);
+	this.bmi22=calcBMI22(data.ht.num);
+	this.abw=calcABW(this.ibw, data.wt.num);
+	this.vi=calcVI(this.bmi, data.age.num, data.sex);
+	this.ev=calcEV(this.vi, data.wt.num);
+	this.fv=calcFV(data.hbstart.num, data.hbmin.num);
+	this.mv=calcMV(this.fv, this.ev);
+	this.gfr1=calcGFR1();
+	this.gfr2=calcGFR2();
+	this.gfr3=calcGFR3();
+	this.gfr4=calcGFR4();
+}
+vals.publishWS=function()
+{
+	document.getElementById("wsBMI").innerHTML = this.bmi.toFixed(1);
+	document.getElementById("wsTBW").innerHTML = this.tbw.toFixed(1);
+	document.getElementById("wsLBW").innerHTML = this.lbw.toFixed(1);
+	document.getElementById("wsLSW").innerHTML = this.lsw.toFixed(1);
+	document.getElementById("wsIBW").innerHTML = this.ibw.toFixed(1);
+	document.getElementById("wsBMI22").innerHTML = this.bmi22.toFixed(1);
+	document.getElementById("wsABW").innerHTML = this.abw.toFixed(1);
+}
+vals.publishBV=function()
+{
+	document.getElementById("bvBMI").innerHTML = this.bmi.toFixed(1);
+	document.getElementById("bvVI").innerHTML = this.vi.toFixed(1);
+	document.getElementById("bvEV").innerHTML = this.ev.toFixed(0);
+	document.getElementById("bvMV").innerHTML = this.mv.toFixed(0);
+	document.getElementById("bvFV").innerHTML = (100.0*this.fv).toFixed(0);
+}
+vals.publishGFR=function()
+{
+	document.getElementById("gfrBMI").innerHTML = this.bmi.toFixed(1);
+	document.getElementById("gfrGFR1").innerHTML = this.gfr1.toFixed(1);
+	document.getElementById("gfrGFR2").innerHTML = this.gfr2.toFixed(1);
+	document.getElementById("gfrGFR3").innerHTML = this.gfr3.toFixed(1);
+	document.getElementById("gfrGFR4").innerHTML = this.gfr4.toFixed(1);
+}
+vals.publish=function()
+{
+	this.publishWS();
+	this.publishBV();
+	this.publishGFR();
+}
+</script>
+<!--App functions------------------------------------->
+<script>
+function updateAll()
+{
+	
+	data.publish();
+	vals.calc();
+	vals.publish();
+	if (nav.page=='PageData')
+		nav.goBack();
+}
+</script>
+<!--Data entry page------------------------------------>
+<script>
+document.getElementById("calc").href="javascript:updateAll()";
+document.getElementById("units").onclick=function(){data.toggleUnits()};
+document.getElementById("reset").onclick=function(){data.reset();};
+document.getElementById("mf").onclick=function(){data.toggleMF()};
+document.getElementById("inWt").onchange=function(){data.getVal(this.id, data.wt)};
+document.getElementById("inHt").onchange=function(){data.getVal(this.id, data.ht)};
+document.getElementById("inHbStart").onchange=function(){data.getVal(this.id, data.hbstart)};
+document.getElementById("inHbMin").onchange=function(){data.getVal(this.id, data.hbmin)};
+document.getElementById("inCreat").onchange=function(){data.getVal(this.id, data.creat)};
+document.getElementById("inAge").onchange=function(){data.getVal(this.id, data.age)};
+
+</script>
+<!--Temp script---------------------------------------->
+<script>
+
+
+
+</script>
+
+<!--Script to run after page has loaded------------->
+<script>
+window.onload = function()
+{ 
+	data.init();
+	data.publish();
+	vals.calc();
+	vals.publish();
+}
+</script>
+</body>
+</html> 
+
+<!--Code snippets---------------------------------------
+
+--End Code snippets-->
+
