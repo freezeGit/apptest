@@ -105,6 +105,10 @@ width:100%;
 margin:auto;
 padding:0px;
 }
+#menu li
+{
+width:90%;
+}
 @media screen and (orientation: portrait)
 {
 #menu li
@@ -115,7 +119,7 @@ padding:0px;
 }
 @media screen and (orientation: landscape)
 {
-	#menu li
+#menu li
 	{
 	width:50%;
 	}
@@ -158,7 +162,7 @@ padding-bottom:0m;
 .display .dds
 {
 font-size:2em;
-color:#1e7145;
+color:#b91d47;
 text-align: center;
 }
 .display table
@@ -272,10 +276,10 @@ ObesityCalcs
 </div>
 <div id="menu">
     <ul>
-        <li class="cl"><a href="javascript:nav.toPage('PageDisplayWS');">Weight Scalars</a></li>
-        <li class="lt"><a href="javascript:nav.toPage('PageDisplayBV');">Blood Volumes</a></li>
-        <li class="cl"><a href="javascript:nav.toPage('PageDisplayOSA');">OSA Risk</a></li>
-		<li class="lt"><a href="javascript:nav.toPage('PageData');">Patient Data</a></li>
+		<li class="cl"><a href="javascript:nav.toPage('PageData');">Data Input</a></li>
+        <li class="lt"><a href="javascript:nav.toPage('PageDisplayWS');">Weight Scalars</a></li>
+        <li class="cl"><a href="javascript:nav.toPage('PageDisplayBV');">Blood Volumes</a></li>
+        <li class="lt"><a href="javascript:nav.toPage('PageDisplayOSA');">OSA Risk</a></li>
 		<div class="endfloat"></div>
     </ul>
 </div>
@@ -292,11 +296,12 @@ ObesityCalcs
     <ul>
 		<li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
         <li><a href="javascript:nav.toPage('PageInfoWS');">Info</a></li>
+		<li><a href="javascript:nav.toPage('PageData');">Input</a></li>
  		<div class="endfloat"></div>
     </ul>
 </div>
 
-<p id="wsDS"" class="dds">x</p>
+<p id="wsDS" class="dds">x</p>
 
 <table>
 <tr>
@@ -343,6 +348,7 @@ ObesityCalcs
     <ul>
 		<li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
 		<li><a href="javascript:nav.toPage('PageInfoBV');">Info</a></li>
+		<li><a href="javascript:nav.toPage('PageData');">Input</a></li>
 		<div class="endfloat"></div>
     </ul>
 </div>
@@ -447,7 +453,6 @@ ObesityCalcs
   <td id="inHbMinSt">Minimum&nbsp;Hb:</td>
   <td><input id="inHbMin" type="number"></td>
 </tr>
-</tr>
 </table>
 
 <div class="dobutton"  id="units">Units</div>
@@ -472,18 +477,13 @@ ObesityCalcs
 <div class="stext">
 <p>
 <em>ObesityCalcs</em> demonstrates several calculations 
-that are useful in the anesthetic management of obese patients.  
-It is designed to be used clinically 
-in the operating room, as well as to facilitate learning through  
-exploring the application of the different calculations. 
-</p>
-<p>
-Selected references document evidence supporting the clinical use of the formulas, as well as the 
-history of their development. 
+used in the anesthetic management of obese patients.  
+It is useful in the operating room, and as a learning tool. 
+Selected references document the clinical use of the formulas. 
 </p>
 <p>
 The formulas provided and the values calculated require interpretation by properly trained and qualified professionals. 
-Patient management must consider individual factors including age, sex, fitness and medical conditions, 
+Patient management must consider individual factors including age, fitness and medical conditions, 
 as well as ongoing additions to the evidence available in the medical literature. 
 </p>
 <p>
@@ -555,7 +555,7 @@ drug dosage in obese patients<sup>1,2,3</sup>.
 <p>
 <b>Use:</b><br />
 The TBW is the appropriate weight scalar for use with 
-patients of normal weight. However, in morbidly obese individuals 
+patients of normal weight. In morbidly obese individuals 
 the increased weight is composed of proportionately greater 
 adipose tissue than muscle mass. 
 Drug distribution and clearance are both altered in obesity, and 
@@ -666,7 +666,7 @@ Curr Opin Anaesthesiol.
 3. 
 <i>Morrish GA, Pai MP, Green B. </i>
 The effects of obesity on drug pharmacokinetics in humans. 
-Expert Opin Drug Metab Toxicol. </i>
+Expert Opin Drug Metab Toxicol. 
 2011 Jun;7(6):697-706.
 </p>
 <p>
@@ -805,7 +805,11 @@ for the individual patient, and ln is the natural logarithm. The
 frequently used linear approximation<sup>4</sup> 
 EBV&times;(H<sub>init</sub>&#8722;H<sub>min</sub>)&divide;
 &#189;(H<sub>init</sub>+H<sub>min</sub>) 
-slightly underestimates the MBL. The total blood volume is also useful for 
+slightly underestimates the MBL. 
+</p>
+<p>
+<b>Coagulopathy:</b><br />
+The total blood volume is also useful for 
 estimating how much blood can be lost before unacceptible decreases in 
 fibrinogen or platelets are likely to occur.<sup>2</sup>
 </p>
@@ -859,18 +863,21 @@ Anesthesiology.
 Obstructive sleep apnea (OSA) is common in the pre-operative patient 
 population, and is associated with increased perioperative risk<sup>1</sup>. 
 The Stop-Bang questionnaire is a screening tool widely used to identify 
-OSA risk. The score is calculated by adding up the positive responses 
-to eight yes/no questions. It is simple to use and to score, and has been 
-validated with perioperative patients<sup>2,3</sup>.
+OSA risk: the score is calculated by adding up the positive responses 
+to eight yes/no questions. 
+</p>
+<p>
+It is simple to use, and has been validated 
+in the perioperative patient population<sup>2,3</sup>. Its predictive performance 
+has been confirmed for obese and morbidly obese surgical patients<sup>6</sup>.
 </p>
 <p>
 In surgical patients, a score of 3 or greater has a high sensitivity for 
 the presence of OSA<sup>4</sup> and a score of 5 or more has a good specificity for 
-moderate to severe OSA<sup>5</sup>. The Stop-Bang score has also been validated specifically 
-in a population of obese and morbidly obese patients coming for surgery<sup>6</sup>. 
+moderate to severe OSA<sup>5</sup>. 
 </p>
 <p>
-<em>ObesityCalcs</em> assigns a rubric of "Low Risk" to Stop-Bang scores 
+<em>ObesityCalcs</em> assigns a rating of "Low Risk" to Stop-Bang scores 
 less than 3 (because of the high sensitivity of greater scores) and "High Risk" 
 to scores of 5 or more (because of the good specificity for moderate and severe OSA).
 </p>
@@ -965,7 +972,8 @@ nav.toPage=function(idPage)
 	if (p2) {
 	  p2.className='unhidden';
 	}
-	this.oldPage=this.page;
+	if ((idPage != "PageErrorData")&&(this.page != "PageErrorData"))
+		this.oldPage=this.page;
 	this.page=idPage;
 }
 nav.goBack=function()
@@ -1279,7 +1287,7 @@ function updateAll()
 	vals.calc();
 	vals.publish();
 	if (nav.page=='PageData')
-		nav.toPage('PageMenu');
+		nav.goBack();
 }
 </script>
 <!--Data entry page------------------------------------>
