@@ -261,6 +261,14 @@ float:right;
 </head>
 
 <body>
+<script>
+ var isiPhone = navigator.userAgent.match(/iPhone/i) != null;
+ if (isiPhone)
+ {
+	var b = document.getElementsByTagName("body")[0]
+	b.style.fontSize = "57.1428%";
+}
+</script>
 <!--Main menu page---------------------------------->
 <div class="main">
 <div id="PageMenu" class="unhidden"> 
