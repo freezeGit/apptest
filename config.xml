@@ -16,5 +16,8 @@
     <author  email="jfriesn@cc.umanitoba.ca">
         John Friesen 
     </author>
+    
+    <gap:platform name="ios" />
+    <gap:platform name="android" />
 
 </widget>
