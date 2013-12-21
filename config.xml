@@ -24,6 +24,8 @@
     <icon src="icons/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
     <icon src="icons/ios/icon@2x.png" gap:platform="ios" width="114" height="114" />
     <icon src="icons/ios/icon-72@2x.png" gap:platform="ios" width="144" height="144" />
+    <icon src="icons/ios/iTunesArtwork.png" gap:platform="ios" width="512" height="512" />
+    <icon src="icons/ios/iTunesArtwork@2x.png" gap:platform="ios" width="1024" height="1024" />
     
     <icon src="icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" />
     <icon src="icons/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
