@@ -87,7 +87,7 @@ margin-right: 0.5em;
 display: block;
 font-size:2.5em;
 font-weight:bold;
-color: #ffc40d ;
+color: #ffc40d;
 background-color:#1d1d1d;
 text-decoration: none;
 text-align: center;
@@ -264,7 +264,8 @@ float:right;
 <body>
 <script>
  var isiPhone = navigator.userAgent.match(/iPhone/i) != null;
- if (isiPhone)
+ var isiPod = navigator.userAgent.match(/iPod/i) != null;
+ if (isiPhone || isiPod)
  {
 	var b = document.getElementsByTagName("body")[0]
 	b.style.fontSize = "50%";
@@ -491,7 +492,7 @@ It is useful in the operating room, and as a learning tool.
 Selected references document the clinical use of the formulas. 
 </p>
 <p>
-The formulas provided and the values calculated require interpretation by properly trained and qualified professionals. 
+The formulas provided require interpretation by properly trained and qualified professionals. 
 Patient management must consider individual factors including age, fitness and medical conditions, 
 as well as ongoing additions to the evidence available in the medical literature. 
 </p>
@@ -1253,17 +1254,21 @@ osa.pubScore=function()
 
 osa.tog=function(tg, id)
 {
+	var fcol;
 	var bcol;
 	if (tg)
 	{
 		this.score-=1;
+		fcol = "#ffc40d";
 		bcol = "#1e7145";
 	}
 	else
 	{
 		this.score+=1;
+		fcol = "#1d1d1d";
 		bcol = "#ee1111";	
 	}
+	document.getElementById(id).style.color=fcol;
 	document.getElementById(id).style.backgroundColor=bcol;
 	this.pubScore();
 	return !tg;
