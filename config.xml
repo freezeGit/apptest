@@ -7,10 +7,10 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>ObesityCalcs</name>
+    <name>ObeseCalc</name>
 
     <description>
-        Manage obese prioperative patients. 
+        Manage obese perioperative patients. 
     </description>
 
     <author  email="jfriesn@cc.umanitoba.ca">
