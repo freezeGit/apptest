@@ -36,6 +36,8 @@
     <icon src="icons/ios/Icon-76@2x.png" gap:platform="ios" width="152" height="152" />
 	<icon src="icons/ios/Icon-40.png" gap:platform="ios" width="40" height="40" />
     <icon src="icons/ios/Icon-40@2x.png" gap:platform="ios" width="80" height="80" />
+	<icon src="icons/ios/iTunesArtwork" gap:platform="ios" width="512" height="512" />
+    <icon src="icons/ios/iTunesArtwork@2x" gap:platform="ios" width="1024" height="1024" />
 
     <icon src="icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" />
     <icon src="icons/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
