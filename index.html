@@ -1,8 +1,11 @@
 <!DOCTYPE html> <!-- HTML5 -->
 <html>
 <head>
-<meta charset="UTF-8">  <!--may be other metas -->
-<title>ObeseCalc Calculator</title>
+<meta charset="UTF-8"> 
+<meta name="keywords" content="obese,bariatric,anesthesia,perioperative,BMI,OSA,scalars,calculator,medical">
+<meta name="description" content="BigSleep demonstrates several calculations used in the anesthetic management of obese patients.">
+<meta name="author" content="Slumber Software">
+<title>BigSleep</title>
 <!--Default style---------------------------------->
 <style>
 *
@@ -156,6 +159,15 @@ margin-top:1em;
 padding-top:0em;
 padding-bottom:0m;
 }
+.linker a
+{
+cursor:default;
+text-decoration: none;
+color: #ffc40d;
+background-color:#1d1d1d;
+padding-left:.5em;
+padding-right:.5em;
+}
 </style>
 <!--Display table----------------------------------->
 <style>
@@ -268,7 +280,7 @@ float:right;
  if (isiPhone || isiPod)
  {
 	var b = document.getElementsByTagName("body")[0]
-	b.style.fontSize = "45%";
+	b.style.fontSize = "120%";
 }
 </script>
 <!--Main menu page---------------------------------->
@@ -276,7 +288,7 @@ float:right;
 <div id="PageMenu" class="unhidden"> 
 <div class="header">
 <h1>
-ObeseCalc
+BigSleep
 </h1>
 </div>
 <div class="navbar">
@@ -475,7 +487,7 @@ ObeseCalc
 <!--Menu information page-------------------------->
 <div id="PageInfoMenu" class="hidden">
 <div class="header">
-<h1>ObeseCalc</h1>
+<h1>BigSleep</h1>
 </div>
 <div class="navbar">
     <ul>
@@ -486,7 +498,7 @@ ObeseCalc
 
 <div class="stext">
 <p>
-<em>ObeseCalc</em> demonstrates several calculations 
+<em>BigSleep</em> demonstrates several calculations 
 used in the anesthetic management of obese patients.  
 It is useful in the operating room, and as a learning tool. 
 Selected references document the clinical use of the formulas. 
@@ -497,11 +509,58 @@ Patient management must consider individual factors including age, fitness and m
 as well as ongoing additions to the evidence available in the medical literature. 
 </p>
 <p>
-<em>slumbersoftware@gmail.com</em>
+<span class="linker"><a href="javascript:nav.toPage('PageInfoMobile');">Set app on mobile device</a></span>
+</p>
+<p>
+<em>slumbersoftware@gmail.com <br />2013</em>
 </p>
 </div>
 </div>
-<!--Display information pages------------------------------->
+<!--Mobile icon information page---------------------------->
+<div id="PageInfoMobile" class="hidden">
+<div class="header">
+<h1>Mobile Device</h1>
+</div>
+<div class="navbar">
+    <ul>
+		<li><a href="javascript:nav.toPage('PageInfoMenu');">Info</a></li>
+		<div class="endfloat"></div>
+    </ul>
+</div>
+
+<div class="stext">
+<p>
+An icon for the <em>BigSleep</em> app can be added 
+to the home screen of your mobile device.  
+It can then be opened quickly with a single touch. 
+</p>
+<p>
+<b>For iPhone or iPad</b><br />
+Open the Safari browser<br />
+Navigate to the website: <em>www.bigsleep.altervista.org</em><br />
+Press the <em>Action Key</em> (with upward pointing arrow)<br />
+Press the <em>Add to Home Screen</em> button<br />
+Press <em>Add</em><br />
+The icon will appear on your home screen<br /> 
+</p>
+<p>
+<b>For Android</b><br />
+Open your Internet browser and navigate to the website<br />
+Create a bookmark to the site<br />
+Open the Bookmarks folder<br />
+Press and hold your finger on the new bookmark<br />
+Press the <em>Add to Home Screen</em> option<br />
+Press + Hold + Drag to move the icon as desired<br />
+</p>
+<p>
+<b>For laptop (off line)</b><br />
+Open your browser<br />
+Navigate to the website<br />
+Save as html file on the desktop<br />
+Double click to open
+</p>
+</div>
+</div>
 <!--Weight scalars information page------------------------->
 <div id="PageInfoWS" class="hidden">
 <div class="header">
@@ -510,39 +569,11 @@ as well as ongoing additions to the evidence available in the medical literature
 <div class="navbar">
     <ul>
         <li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
-		<li><a href="javascript:nav.toPage('PageDisplayWS');">Values</a></li>
+		<li><a href="javascript:nav.toPage('PageDisplayWS');">Values</a></li>			
  		<div class="endfloat"></div>
     </ul>
 </div>
 <div class="stext">
-<h3>Weight-Based Scalars for Obese Patients<sup>1,2,13</sup></h3>
-<p>
-<b>Propofol/ Thiopental</b><br />
-<b><i>Induction:</i></b> Lean-Scaled Weight (LSW)<sup>12</sup><br />
-<b><i>Maintenance:</i></b> Total Body Weight (TBW)<br />
-</p>
-<p>
-<b>Fentanyl/ Sufentanil/ Remifentanil</b><br />
-Lean-Scaled Weight (LSW)<sup>12</sup><br />
-</p>
-<p>
-<b>Succinylcholine</b><br />
-Total Body Weight (TBW)<br />
-</p>
-<p>
-<b>Vecuronium/ Rocuronium/<br />Atracurium/ Cisatracurium</b><br />
-Ideal Body Weight (IBW)<br />
-</p>
-<p>
-<b>Non-Obese Patients</b><br />
-Total Body Weight (TBW)<br />
-</p>
-<p>
-The above weight scalars provide a guide to the influence of obesity 
-on the estimation of safe and effective doses for different classes of drugs. 
-The actual dose chosen will depend on individual patient factors such as age, sex, and medical conditions. 
-</p>
-<hr />
 <h3>Body Mass Index (BMI)</h3>
 <p>
 <b>Calculation:</b><br />
@@ -615,9 +646,9 @@ it is about 75% of the TBW at a BMI of 40, 60% at a BMI of 60, and 50% at a BMI 
 <h3>Ideal Body Weight (IBW)</h3>
 <p>
 <b>Calculation:<sup>8</sup></b><br />
-<span class="eqn">IBW = 45.4+0.89&times;(Height-152.4)</span><br />
+<span class="eqn">IBW = 45.5+2.3&times;(Height-60)</span><br />
 <span class="eqn">For men: add 4.5</span><br />
-(Height is in cm)<br />
+(Height in inches)<br />
 </p>
 <p>
 <b>Use:</b><br />
@@ -626,7 +657,7 @@ for a given height, but it does not reflect changes in body composition
 with obesity.<sup>3</sup> All patients of the same height have the  same calculated IBW, 
 regardless of how much they weigh. Nonetheless, studies suggest that the IBW 
 may be useful for dosing nondepolarizing muscle relaxants.<sup>1,2</sup> 
-The Devine formula<sup>8</sup> is commonly used and is calculated here. 
+The Devine formula<sup>8,14</sup> is commonly used and is calculated here. 
 See the BMI22 Weight for an alternative. 
 </p>
 <h3>BMI22 Weight</h3>
@@ -655,6 +686,33 @@ The ABW adds a percentage of the excess weight to the IBW in an attempt
 to normalize drug doses in obese patients. 
 The empirical factor of 40% used by Servin<sup>9</sup> 
 is employed here. 
+</p>
+<h3>Weight-Based Scalars for Obese Patients<sup>1,2,13</sup></h3>
+<p>
+<b>Propofol/ Thiopental</b><br />
+<b><i>Induction:</i></b> Lean-Scaled Weight (LSW)<sup>12</sup><br />
+<b><i>Maintenance:</i></b> Total Body Weight (TBW)<br />
+</p>
+<p>
+<b>Fentanyl/ Sufentanil/ Remifentanil</b><br />
+Lean-Scaled Weight (LSW)<sup>12</sup><br />
+</p>
+<p>
+<b>Succinylcholine</b><br />
+Total Body Weight (TBW)<br />
+</p>
+<p>
+<b>Vecuronium/ Rocuronium/<br />Atracurium/ Cisatracurium</b><br />
+Ideal Body Weight (IBW)<br />
+</p>
+<p>
+<b>Non-Obese Patients</b><br />
+Total Body Weight (TBW)<br />
+</p>
+<p>
+The above weight scalars provide a guide to the influence of obesity 
+on the estimation of safe and effective doses for different classes of drugs. 
+The actual dose chosen will depend on individual patient factors such as age, sex, and medical conditions. 
 </p>
 <hr /><b>References</b><br />
 <p>
@@ -748,6 +806,12 @@ Perioperative management of the severely obese patient: a selective pathophysiol
 Can J Anesth. 
 2012 Oct;59(10):974-96.
 </p>
+<p>
+14. 
+<i>Pai MP, Paloucek FP. </i>
+The origin of the &quot;ideal&quot; body weight equations. Ann Pharmacother. 
+2000 Sep;34(9):1066-9. 
+</p>
 </div>
 </div>
 <!--Blood volumes information page------------------------->
@@ -765,7 +829,7 @@ Can J Anesth.
 <div class="stext">
 <h3>Estimation of Blood Volumes<sup>1</sup></h3>
  <p>
-Preoperative estimation of a patient's blood volume is helpful 
+Preoperative estimation of a patient's blood volume is helpful  
 in order to guide the administration of crystalloids, colloids, 
 red blood cells and coagulation factors. The increase 
 in total blood volume with obesity is non-linear, which can result 
@@ -782,7 +846,7 @@ Lemmens et al have derived an empirical equation that corrects
 the blood volume index for obesity (where BMI/22 estimates the 
 deviation from ideal weight):<sup>1</sup><br />
 <span class="eqn">Blood Volume Index (cc/kg) = 70&divide;sqrt(BMI/22)</span><br />
-<em>ObeseCalc</em> applies this formula to the calculation of the  
+<em>BigSleep</em> applies this formula to the calculation of the  
 blood volume index for any patient whose BMI is greater than 22.0
 </p>
 <p>
@@ -792,7 +856,7 @@ decreases with advancing age.<sup>1</sup> This decrease does not occur
 in those who remain aerobically fit.<br />
 <span class="eqn">BV<sub>index</sub> = 90&#8722;0.4&times;age</span> For men<br />
 <span class="eqn">BV<sub>index</sub> = 85&#8722;0.4&times;age</span> For women<br />
-<em>ObeseCalc</em> will apply this regression for patients more than fifty years old.  
+<em>BigSleep</em> will apply this regression for patients more than fifty years old.  
 Entering an age of 50 years or less will 
 remove the effect of age from the calculation of blood volumes. 
 </p>
@@ -882,18 +946,15 @@ to eight yes/no questions.
 </p>
 <p>
 It is simple to use, and has been validated 
-in the perioperative patient population<sup>2,3</sup>. Its predictive performance 
+in the perioperative patient population<sup>2,3,4</sup>. Its predictive performance 
 has been confirmed for obese and morbidly obese surgical patients<sup>6</sup>.
 </p>
 <p>
 In surgical patients, a score of 3 or greater has a high sensitivity for 
-the presence of OSA<sup>4</sup> and a score of 5 or more has a good specificity for 
+the presence of OSA and a score of 5 or more has a good specificity for 
 moderate to severe OSA<sup>5</sup>. 
-</p>
-<p>
-<em>ObeseCalc</em> assigns a rating of "Low Risk" to Stop-Bang scores 
-less than 3 (because of the high sensitivity of greater scores) and "High Risk" 
-to scores of 5 or more (because of the good specificity for moderate and severe OSA).
+<em>BigSleep</em> assigns a rating of "Low Risk" to Stop-Bang scores 
+less than 3 and "High Risk" to scores of 5 or more. 
 </p>
 <hr>
 <b>References</b><br />
@@ -1157,7 +1218,8 @@ function calcLSW(plbw, psex)
 }
 function calcIBW(pht, psex)
 {
-	var iw = 45.4 + 0.89*(pht-152.4);
+	var hti = pht/2.54;
+	var iw = 45.5 + 2.3*(hti-60.0);
     if (psex=="Male")
         iw+=4.5;
 	return iw;
