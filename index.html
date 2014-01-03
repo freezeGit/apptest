@@ -280,7 +280,7 @@ float:right;
  if (isiPhone || isiPod)
  {
 	var b = document.getElementsByTagName("body")[0]
-	b.style.fontSize = "120%";
+	b.style.fontSize = "45%";
 }
 </script>
 <!--Main menu page---------------------------------->
@@ -509,55 +509,7 @@ Patient management must consider individual factors including age, fitness and m
 as well as ongoing additions to the evidence available in the medical literature. 
 </p>
 <p>
-<span class="linker"><a href="javascript:nav.toPage('PageInfoMobile');">Set app on mobile device</a></span>
-</p>
-<p>
 <em>slumbersoftware@gmail.com <br />2013</em>
-</p>
-</div>
-</div>
-<!--Mobile icon information page---------------------------->
-<div id="PageInfoMobile" class="hidden">
-<div class="header">
-<h1>Mobile Device</h1>
-</div>
-<div class="navbar">
-    <ul>
-		<li><a href="javascript:nav.toPage('PageInfoMenu');">Info</a></li>
-		<div class="endfloat"></div>
-    </ul>
-</div>
-
-<div class="stext">
-<p>
-An icon for the <em>BigSleep</em> app can be added 
-to the home screen of your mobile device.  
-It can then be opened quickly with a single touch. 
-</p>
-<p>
-<b>For iPhone or iPad</b><br />
-Open the Safari browser<br />
-Navigate to the website: <em>www.bigsleep.altervista.org</em><br />
-Press the <em>Action Key</em> (with upward pointing arrow)<br />
-Press the <em>Add to Home Screen</em> button<br />
-Press <em>Add</em><br />
-The icon will appear on your home screen<br /> 
-</p>
-<p>
-<b>For Android</b><br />
-Open your Internet browser and navigate to the website<br />
-Create a bookmark to the site<br />
-Open the Bookmarks folder<br />
-Press and hold your finger on the new bookmark<br />
-Press the <em>Add to Home Screen</em> option<br />
-Press + Hold + Drag to move the icon as desired<br />
-</p>
-<p>
-<b>For laptop (off line)</b><br />
-Open your browser<br />
-Navigate to the website<br />
-Save as html file on the desktop<br />
-Double click to open
 </p>
 </div>
 </div>
@@ -1177,7 +1129,7 @@ data.toggleMF=function()
 data.publish=function()
 {
 	var wsDstr = "Weight:&nbsp;"+this.wt.str+"&nbsp;kg&nbsp;&nbsp; Height:&nbsp;"+this.ht.str+"&nbsp;cm&nbsp;&nbsp; Sex:&nbsp;"+this.sex;
-	var bvDstr = "Initial&nbsp;Hb:&nbsp;"+this.hbstart.str+"&nbsp;kg&nbsp;&nbsp; Min&nbsp;Hb:&nbsp;"+this.hbmin.str+"&nbsp;cm&nbsp;&nbsp; Age:&nbsp;"+this.age.str;
+	var bvDstr = "Initial&nbsp;Hb:&nbsp;"+this.hbstart.str+"&nbsp;&nbsp; Min&nbsp;Hb:&nbsp;"+this.hbmin.str+"&nbsp;&nbsp; Age:&nbsp;"+this.age.str;
 	bvDstr = wsDstr + "&nbsp;&nbsp; " + bvDstr;
 	document.getElementById("wsDS").innerHTML = wsDstr;
 	document.getElementById("bvDS").innerHTML = bvDstr;
@@ -1236,7 +1188,7 @@ function calcABW(pibw, pwt)
 function calcVI(pbmi, page, psex)
 {
 	var rg = (psex=="Male") ? 90.0 : 85.0;
-	if (page<50.0)
+	if (page<50.05)
 		page=50.0;
 	rg-=0.4*page;
 	var obfactor = (pbmi>22.0) ? 1.0/Math.sqrt(pbmi/22.0) : 1.0;
