@@ -275,17 +275,18 @@ float:right;
 
 <body>
 <script>
- var isiPhone = navigator.userAgent.match(/iPhone/i) != null;
- var isiPod = navigator.userAgent.match(/iPod/i) != null;
- var isAndroid = navigator.userAgent.match(/Android/i) != null;
- if (isiPhone || isiPod)
- {
-	var b = document.getElementsByTagName("body")[0]
+var isiPhone = navigator.userAgent.match(/iPhone/i) != null;
+var isiPod = navigator.userAgent.match(/iPod/i) != null;
+var isAndroid = navigator.userAgent.match(/Android/i) != null;
+var b;
+if (isiPhone || isiPod)
+{
+	b = document.getElementsByTagName("body")[0]
 	b.style.fontSize = "45%";
 }
 else if (isAndroid)
 {
-	var b = document.getElementsByTagName("body")[0]
+	b = document.getElementsByTagName("body")[0]
 	b.style.fontSize = "45%";
 }
 </script>
@@ -648,31 +649,12 @@ to normalize drug doses in obese patients.
 The empirical factor of 40% used by Servin<sup>9</sup> 
 is employed here. 
 </p>
-<h3>Weight-Based Scalars for Obese Patients<sup>1,2,13</sup></h3>
+<h3>Weight-Based Scalars for Obese Patients</h3>
 <p>
-<b>Propofol/ Thiopental</b><br />
-<b><i>Induction:</i></b> Lean-Scaled Weight (LSW)<sup>12</sup><br />
-<b><i>Maintenance:</i></b> Total Body Weight (TBW)<br />
-</p>
-<p>
-<b>Fentanyl/ Sufentanil/ Remifentanil</b><br />
-Lean-Scaled Weight (LSW)<sup>12</sup><br />
-</p>
-<p>
-<b>Succinylcholine</b><br />
-Total Body Weight (TBW)<br />
-</p>
-<p>
-<b>Vecuronium/ Rocuronium/<br />Atracurium/ Cisatracurium</b><br />
-Ideal Body Weight (IBW)<br />
-</p>
-<p>
-<b>Non-Obese Patients</b><br />
-Total Body Weight (TBW)<br />
-</p>
-<p>
-The above weight scalars provide a guide to the influence of obesity 
-on the estimation of safe and effective doses for different classes of drugs. 
+The above weight scalars are useful in the management  of obese patients when estimating 
+safe and effective doses for different classes of drugs. 
+The choice of which scalar is most appropriate for a given drug is controversial 
+and will continue to evolve as more evidence becomes available.<sup>1,2,13,15</sup> 
 The actual dose chosen will depend on individual patient factors such as age, sex, and medical conditions. 
 </p>
 <hr /><b>References</b><br />
@@ -770,8 +752,16 @@ Can J Anesth.
 <p>
 14. 
 <i>Pai MP, Paloucek FP. </i>
-The origin of the &quot;ideal&quot; body weight equations. Ann Pharmacother. 
+The origin of the &quot;ideal&quot; body weight equations. 
+Ann Pharmacother. 
 2000 Sep;34(9):1066-9. 
+</p>
+<p>
+15. 
+<i>Schumann R. </i>
+Anaesthesia for bariatric surgery. 
+Best Pract Res Clin Anaesthesiol. 
+2011 Mar;25(1):83-93. 
 </p>
 </div>
 </div>
