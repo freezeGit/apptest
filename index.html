@@ -277,8 +277,14 @@ float:right;
 <script>
  var isiPhone = navigator.userAgent.match(/iPhone/i) != null;
  var isiPod = navigator.userAgent.match(/iPod/i) != null;
+ var isAndroid = navigator.userAgent.match(/Android/i) != null;
  if (isiPhone || isiPod)
  {
+	var b = document.getElementsByTagName("body")[0]
+	b.style.fontSize = "45%";
+}
+else if (isAndroid)
+{
 	var b = document.getElementsByTagName("body")[0]
 	b.style.fontSize = "45%";
 }
