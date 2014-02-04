@@ -146,7 +146,7 @@ padding-bottom:.5em;
 .dobutton
 {
 cursor:default;
-min-width:4.5em;
+min-width:6.5em;
 width:30%;
 display: block;
 font-size:2.5em;
@@ -171,7 +171,7 @@ padding-right:.5em;
 </style>
 <!--Display table----------------------------------->
 <style>
-.display .dds
+.dds
 {
 font-size:2em;
 color:#b91d47;
@@ -441,6 +441,28 @@ BigSleep
 <div class="cl"><div id="osaGender" class="sbBtn">Gender:</div></div><div class="stext">Male gender</div>
 <div class="endfloat"></div>
 </div>
+<!--Android format page---------------------------->
+<div id="PageFormat" class="hidden">
+<div class="header">
+<h1>Format</h1>
+</div>
+<div class="navbar">
+    <ul>
+		<li><a href="javascript:nav.toPage('PageInfoMenu');">Info</a></li>
+		<div class="endfloat"></div>
+    </ul>
+</div>
+<p class="dds">Choose the best display format for your device</p>
+<table>
+<tr>
+  <td>Display Format:</td>
+  <td id="formatSt">Phone</td>
+</tr>
+</table>
+<div class="dobutton"  id="abc">Phone</div>
+<div class="dobutton"  id="def">Tablet 1</div>
+<div id="format" class="dobutton"  id="ghi">Tablet 2</div>
+</div>
 </div>
 
 <!--Data entry-------------------------------->
@@ -499,6 +521,7 @@ BigSleep
 <div class="navbar">
     <ul>
 		<li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
+		<li><a href="javascript:nav.toPage('PageFormat');">Format</a></li>
 		<div class="endfloat"></div>
     </ul>
 </div>
@@ -1337,6 +1360,8 @@ document.getElementById("inAge").onchange=function(){data.getVal(this.id, data.a
 <!--Temp script---------------------------------------->
 <script>
 
+
+document.getElementById("format").onclick=function(){var b = document.getElementsByTagName("body")[0]; b.style.fontSize = prompt("Enter %");};
 
 </script>
 <!--Script to run after page has loaded------------->
