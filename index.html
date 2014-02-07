@@ -274,21 +274,22 @@ float:right;
 </head>
 
 <body>
+<!--Format script------------------------------------>
 <script>
-var isiPhone = navigator.userAgent.match(/iPhone/i) != null;
-var isiPod = navigator.userAgent.match(/iPod/i) != null;
-var isAndroid = navigator.userAgent.match(/Android/i) != null;
-var b;
-if (isiPhone || isiPod)
+function showFormat(fmt)
 {
-	b = document.getElementsByTagName("body")[0]
-	b.style.fontSize = "45%";
+	var fs = "45%";
+	if (fmt=="tablet2")
+		fs = "100%";
+	else if (fmt=="tablet1")
+		fs = "70%";
+	var b = document.getElementsByTagName("body")[0];
+	b.style.fontSize = fs;
 }
-else if (isAndroid)
-{
-	b = document.getElementsByTagName("body")[0]
-	b.style.fontSize = "45%";
-}
+var appFormat = "phone";
+if((typeof(Storage)!=="undefined") && (localStorage.formatStr))
+	appFormat = localStorage.formatStr;
+showFormat(appFormat);
 </script>
 <!--Main menu page---------------------------------->
 <div class="main">
@@ -459,9 +460,9 @@ BigSleep
   <td id="formatSt">Phone</td>
 </tr>
 </table>
-<div class="dobutton"  id="abc">Phone</div>
-<div class="dobutton"  id="def">Tablet 1</div>
-<div id="format" class="dobutton"  id="ghi">Tablet 2</div>
+<div id="formatPhone" class="dobutton">Phone</div>
+<div id="formatTablet1" class="dobutton">Tablet 1</div>
+<div id="formatTablet2" class="dobutton">Tablet 2</div>
 </div>
 </div>
 
@@ -1357,12 +1358,17 @@ document.getElementById("inHbMin").onchange=function(){data.getVal(this.id, data
 document.getElementById("inAge").onchange=function(){data.getVal(this.id, data.age)};
 
 </script>
-<!--Temp script---------------------------------------->
+<!--Format page---------------------------------------->
 <script>
-
-
-document.getElementById("format").onclick=function(){var b = document.getElementsByTagName("body")[0]; b.style.fontSize = prompt("Enter %");};
-
+function setFormat(fm)
+{
+	if(typeof(Storage)!=="undefined")
+		localStorage.formatStr = fm;
+	showFormat(fm);
+}
+document.getElementById("formatPhone").onclick=function(){setFormat("phone")};
+document.getElementById("formatTablet1").onclick=function(){setFormat("tablet1")};
+document.getElementById("formatTablet2").onclick=function(){setFormat("tablet2")};
 </script>
 <!--Script to run after page has loaded------------->
 <script>
