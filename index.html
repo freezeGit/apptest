@@ -1360,10 +1360,20 @@ document.getElementById("inAge").onchange=function(){data.getVal(this.id, data.a
 </script>
 <!--Format page---------------------------------------->
 <script>
+function pubFormat(f)
+{
+	var fstr = "Phone";
+	if (f=="tablet2")
+		fstr = "Tablet 2";
+	else if (f=="tablet1")
+		fstr = "Tablet 1";
+	document.getElementById("formatSt").innerHTML = fstr;
+}
 function setFormat(fm)
 {
 	if(typeof(Storage)!=="undefined")
 		localStorage.formatStr = fm;
+	pubFormat(fm);
 	showFormat(fm);
 }
 document.getElementById("formatPhone").onclick=function(){setFormat("phone")};
@@ -1380,6 +1390,7 @@ window.onload = function()
 	vals.calc();
 	vals.publish();
 	osa.pubScore();
+	pubFormat(appFormat);
 }
 </script>
 </body>
