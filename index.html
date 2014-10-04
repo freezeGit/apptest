@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8"> 
-<meta name="keywords" content="obese,obesity,bariatric,anesthesia,anesthetic,perioperative,BMI,OSA,scalars,calculator,calculations,medical">
+<meta name="keywords" content="obese,bariatric,anesthesia,perioperative,BMI,OSA,scalars,calculator,medical">
 <meta name="description" content="BigSleep demonstrates several calculations used in the anesthetic management of obese patients.">
 <meta name="author" content="Slumber Software">
 <title>BigSleep</title>
@@ -146,7 +146,7 @@ padding-bottom:.5em;
 .dobutton
 {
 cursor:default;
-min-width:6.5em;
+min-width:4.5em;
 width:30%;
 display: block;
 font-size:2.5em;
@@ -171,7 +171,7 @@ padding-right:.5em;
 </style>
 <!--Display table----------------------------------->
 <style>
-.dds
+.display .dds
 {
 font-size:2em;
 color:#b91d47;
@@ -274,22 +274,21 @@ float:right;
 </head>
 
 <body>
-<!--Format script------------------------------------>
 <script>
-function showFormat(fmt)
+var isiPhone = navigator.userAgent.match(/iPhone/i) != null;
+var isiPod = navigator.userAgent.match(/iPod/i) != null;
+var isAndroid = navigator.userAgent.match(/Android/i) != null;
+var b;
+if (isiPhone || isiPod)
 {
-	var fs = "45%";
-	if (fmt=="tablet2")
-		fs = "100%";
-	else if (fmt=="tablet1")
-		fs = "70%";
-	var b = document.getElementsByTagName("body")[0];
-	b.style.fontSize = fs;
+	b = document.getElementsByTagName("body")[0]
+	b.style.fontSize = "45%";
 }
-var appFormat = "phone";
-if((typeof(Storage)!=="undefined") && (localStorage.formatStr))
-	appFormat = localStorage.formatStr;
-showFormat(appFormat);
+else if (isAndroid)
+{
+	b = document.getElementsByTagName("body")[0]
+	b.style.fontSize = "45%";
+}
 </script>
 <!--Main menu page---------------------------------->
 <div class="main">
@@ -442,28 +441,6 @@ BigSleep
 <div class="cl"><div id="osaGender" class="sbBtn">Gender:</div></div><div class="stext">Male gender</div>
 <div class="endfloat"></div>
 </div>
-<!--Android format page---------------------------->
-<div id="PageFormat" class="hidden">
-<div class="header">
-<h1>Format</h1>
-</div>
-<div class="navbar">
-    <ul>
-		<li><a href="javascript:nav.toPage('PageInfoMenu');">Info</a></li>
-		<div class="endfloat"></div>
-    </ul>
-</div>
-<p class="dds">Choose the best display format for your device</p>
-<table>
-<tr>
-  <td>Display Format:</td>
-  <td id="formatSt">Phone</td>
-</tr>
-</table>
-<div id="formatPhone" class="dobutton">Phone</div>
-<div id="formatTablet1" class="dobutton">Tablet 1</div>
-<div id="formatTablet2" class="dobutton">Tablet 2</div>
-</div>
 </div>
 
 <!--Data entry-------------------------------->
@@ -522,7 +499,6 @@ BigSleep
 <div class="navbar">
     <ul>
 		<li><a href="javascript:nav.toPage('PageMenu');">Menu</a></li>
-		<li><a href="javascript:nav.toPage('PageFormat');">Format</a></li>
 		<div class="endfloat"></div>
     </ul>
 </div>
@@ -1479,27 +1455,10 @@ document.getElementById("inHbMin").onchange=function(){data.getVal(this.id, data
 document.getElementById("inAge").onchange=function(){data.getVal(this.id, data.age)};
 
 </script>
-<!--Format page---------------------------------------->
+<!--Temp script---------------------------------------->
 <script>
-function pubFormat(f)
-{
-	var fstr = "Phone";
-	if (f=="tablet2")
-		fstr = "Tablet 2";
-	else if (f=="tablet1")
-		fstr = "Tablet 1";
-	document.getElementById("formatSt").innerHTML = fstr;
-}
-function setFormat(fm)
-{
-	if(typeof(Storage)!=="undefined")
-		localStorage.formatStr = fm;
-	pubFormat(fm);
-	showFormat(fm);
-}
-document.getElementById("formatPhone").onclick=function(){setFormat("phone")};
-document.getElementById("formatTablet1").onclick=function(){setFormat("tablet1")};
-document.getElementById("formatTablet2").onclick=function(){setFormat("tablet2")};
+
+
 </script>
 <!--Script to run after page has loaded------------->
 <script>
@@ -1511,10 +1470,7 @@ window.onload = function()
 	vals.calc();
 	vals.publish();
 	osa.pubScore();
-	pubFormat(appFormat);
 }
 </script>
 </body>
 </html> 
-
-
